@@ -15,7 +15,8 @@ import java.util.Random;
         public static String generateDate(int shift) {
             // TODO: добавить логику для объявления переменной date и задания её значения, для генерации строки с датой
             // Вы можете использовать класс LocalDate и его методы для получения и форматирования даты
-            return LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+            String date=LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+            return date;
         }
 
         public static String generateCity() {
@@ -23,19 +24,24 @@ import java.util.Random;
             // TODO: добавить логику для объявления переменной city и задания её значения, генерацию можно выполнить
             // с помощью Faker, либо используя массив валидных городов и класс Random
 
-            return cities[new Random().nextInt(cities.length)-1];
+            String city=cities[new Random().nextInt(cities.length)-1];
+            return city;
         }
 
         public static String generateName(String locale) {
             // TODO: добавить логику для объявления переменной name и задания её значения, для генерации можно
+            Faker faker=new Faker(new Locale(locale));
+            String name=faker.name().fullName();
 
-            return new Faker(new Locale(locale)).name().fullName();
+                return name;
         }
 
         public static String generatePhone(String locale) {
             // TODO: добавить логику для объявления переменной phone и задания её значения, для генерации можно
             // использовать Faker
-            return new Faker(new Locale(locale)).phoneNumber().phoneNumber();
+            Faker faker=new Faker(new Locale(locale));
+            String phone=faker.phoneNumber().phoneNumber();
+            return phone;
         }
 
         public static class Registration {
