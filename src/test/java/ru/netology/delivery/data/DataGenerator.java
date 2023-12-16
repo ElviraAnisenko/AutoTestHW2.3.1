@@ -20,7 +20,7 @@ import java.util.Random;
         }
 
         public static String generateCity() {
-            var cities= new String[]{"Москва", "Санкт-Петербург","Самара", "Краснодар", "Салехард", "Псков", "Ростов-на-Дону","Оренбург"};
+            String [] cities= new String[]{"Москва", "Санкт-Петербург","Самара", "Краснодар", "Салехард", "Псков", "Ростов-на-Дону","Оренбург"};
             // TODO: добавить логику для объявления переменной city и задания её значения, генерацию можно выполнить
             // с помощью Faker, либо используя массив валидных городов и класс Random
 
@@ -31,7 +31,7 @@ import java.util.Random;
         public static String generateName(String locale) {
             // TODO: добавить логику для объявления переменной name и задания её значения, для генерации можно
             Faker faker=new Faker(new Locale(locale));
-            String name=faker.name().fullName();
+            String name=faker.name().firstName()+" "+faker.name().lastName();
 
                 return name;
         }
@@ -51,7 +51,8 @@ import java.util.Random;
             public static UserInfo generateUser(String locale) {
                 // TODO: добавить логику для создания пользователя user с использованием методов generateCity(locale),
                 // generateName(locale), generatePhone(locale)
-                return new UserInfo(generateName(locale),generateCity(),generatePhone(locale));
+                UserInfo userInfo=new UserInfo(generateCity(), generateName(locale),generatePhone(locale));
+                return userInfo;
             }
         }
 
